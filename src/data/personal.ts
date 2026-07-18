@@ -3,7 +3,7 @@ export const personalInfo = {
   shortName: "Quốc Tuấn",
   initials: "QT",
   title: "AI Engineer | Full Stack Developer | Computer Vision Enthusiast",
-  email: "tuannguyen211982@email.com",
+  email: "tuannguyen211982@gmail.com",
   location: "Đà Nẵng, Vietnam",
   github: "https://github.com/Joycee23",
   linkedin: "https://www.linkedin.com/in/tuan-nguyen-don-quoc-45a249358/n",
