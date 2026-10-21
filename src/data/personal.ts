@@ -6,7 +6,7 @@ export const personalInfo = {
   email: "tuannguyen211982@gmail.com",
   location: "Đà Nẵng, Vietnam",
   github: "https://github.com/Joycee23",
-  linkedin: "https://www.linkedin.com/in/tuan-nguyen-don-quoc-45a249358/n",
+  linkedin: "https://www.linkedin.com/in/tuan-nguyen-don-quoc-45a249358/",
   facebook: "https://www.facebook.com/JerryNg04",
   resumeUrl: "/Nguyen_Don_Quoc_Tuan_CV.pdf",
 };
@@ -20,7 +20,7 @@ export const typingRoles = [
 
 export const aboutMe = {
   description:
-    "Final-year Information Technology student with a strong passion for Artificial Intelligence, Full Stack Development, and Computer Vision. Experienced in developing scalable web and mobile applications, building RESTful APIs, integrating cloud services, and training deep learning models for real-world problems. Passionate about creating intelligent software solutions that solve practical challenges.",
+    "Software Engineering student building computer vision and full-stack AI applications. My projects cover annotation quality control, retrieval-augmented generation, and evidence-based video review. I am currently collecting robot training data as an intern at VinRobotics and participating in the AI Thực Chiến program organized by Vingroup and VinUniversity.",
   details: [
     { label: "Name", value: "Nguyễn Đôn Quốc Tuấn" },
     { label: "Age", value: "22" },
@@ -146,7 +146,52 @@ export interface Project {
   github?: string;
   demo?: string;
   color: string;
+  role?: string;
+  status?: string;
+  note?: string;
 }
+
+export const recentProjects: Project[] = [
+  {
+    title: "AI Support Operations",
+    role: "Personal project",
+    description: "A multi-tenant support platform that drafts answers from an approved knowledge base, with citations and human escalation.",
+    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL", "pgvector", "Gemini", "Docker"],
+    features: [
+      "Implemented document ingestion, embeddings, and RAG retrieval with PostgreSQL/pgvector.",
+      "Generated response drafts with source citations for human review.",
+      "Added ticket classification, prioritization, and human escalation.",
+      "Implemented workspace-scoped access control and team management.",
+    ],
+    github: "https://github.com/Joycee23/AI-Support-Operations",
+    color: "#818cf8",
+  },
+  {
+    title: "IncidentLens",
+    role: "Full-stack application",
+    status: "Prototype",
+    description: "AI-assisted driving incident review using event logs, timelines, and video evidence.",
+    technologies: ["Python", "FastAPI", "React", "TypeScript", "Supabase", "Gemini", "OpenCV", "Docker"],
+    features: [
+      "Integrated Gemini video analysis to generate timestamped observations linked to supporting evidence.",
+      "Implemented engineer/reviewer roles and approval workflows for AI-generated findings.",
+      "Integrated private video storage with temporary signed URLs.",
+    ],
+    note: "A review prototype. AI observations require human approval; real-world model accuracy has not been established.",
+    github: "https://github.com/Joycee23/RAV-18",
+    color: "#818cf8",
+  },
+  {
+    title: "Build Phase Model - Assisted QC",
+    description: "Model-assisted annotation quality control to flag missed objects and incorrect class labels for review.",
+    technologies: ["Computer Vision", "Object Detection", "Annotation QC"],
+    features: [
+      "Developed model-assisted QC to detect missed objects in annotations.",
+      "Flagged incorrect class labels for review and correction.",
+    ],
+    color: "#818cf8",
+  },
+];
 
 export const projects: Project[] = [
   {
@@ -175,6 +220,7 @@ export const projects: Project[] = [
     ],
     color: "#3B82F6",
     image: "/prj2.png",
+    github: "https://github.com/Joycee23/student-attendance-systeam",
   },
   {
     title: "Vietnamese Traffic Sign Recognition",
@@ -190,6 +236,7 @@ export const projects: Project[] = [
     ],
     color: "#06B6D4",
     image: "/prj1.jpg",
+    github: "https://github.com/Joycee23/Traffic_Sign_Detection",
   },
   {
     title: "GPS Map Camera",
@@ -221,6 +268,7 @@ export const projects: Project[] = [
     ],
     color: "#F59E0B",
     videoUrl: "/prj4.mp4",
+    github: "https://github.com/Joycee23/Movie-RecommenDation",
   },
 ];
 
@@ -260,7 +308,7 @@ export const experienceTimeline: TimelineItem[] = [
 export const education = {
   degree: "Information Technology Engineer",
   university: "Dong A University",
-  major: "AI Engineer",
+  major: "Software Engineering",
   status: "Final-year Student",
   period: "2022 - 2026",
 };
@@ -351,9 +399,33 @@ export const awards = [
     image: "/giaykhen.jpg"
   },
   {
-    title: "Certificate of Completion",
-    issuer: "Professional AI Course",
-    description: "Certificate of achievement in scientific research.",
+    title: "Scientific Research Recognition",
+    issuer: "Dong A University",
+    description: "Recognition for the traffic sign recognition research project in the 2025-2026 academic year.",
     image: "/chungnhan.jpg"
   }
+];
+
+
+export const internships = [
+  {
+    company: "VinRobotics",
+    role: "Intern",
+    period: "07 Oct 2026 - 10 Dec 2026 (expected)",
+    description: "Collect robot training data to support the development of robotics AI models.",
+  },
+  {
+    company: "Hoang Long International Import-Export Company",
+    role: "Full-stack Developer Intern",
+    period: "29 Dec 2025 - 11 Apr 2026",
+    location: "Cu Chi, Vietnam",
+    description: "Developed web applications with React.js and Node.js, implemented RESTful APIs, and worked on database operations and authentication.",
+  },
+  {
+    company: "Varmeta Technology Joint Stock Company",
+    role: "Frontend Developer Intern",
+    period: "01 May 2025 - 01 Aug 2025",
+    location: "Da Nang, Vietnam",
+    description: "Built frontend features with React and React Native, integrated backend APIs, and fixed UI issues under the guidance of senior developers.",
+  },
 ];

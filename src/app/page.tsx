@@ -1,9 +1,6 @@
-"use client";
-
+import { MotionConfig } from "@/components/ui/MotionConfig";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import LoadingScreen from "@/components/layout/LoadingScreen";
-import CursorGlow from "@/components/layout/CursorGlow";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -15,23 +12,20 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <>
-      <LoadingScreen />
-      <CursorGlow />
+    <MotionConfig>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Navbar />
-
-      <main className="flex flex-col gap-12 md:gap-24 overflow-hidden">
+      <main id="main-content">
         <HeroSection />
-        <AboutSection />
-        <SkillsSection />
         <ProjectsSection />
+        <AboutSection />
         <ExperienceSection />
+        <SkillsSection />
         <AwardsSection />
         <ServicesSection />
         <ContactSection />
       </main>
-
       <Footer />
-    </>
+    </MotionConfig>
   );
 }

@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nguyễn Đôn Quốc Tuấn — AI Engineer & Full Stack Developer",
+  title: "Nguyễn Đôn Quốc Tuấn | AI Engineer & Full Stack Developer",
   description:
-    "Portfolio of Nguyễn Đôn Quốc Tuấn — AI Engineer, Full Stack Developer, and Computer Vision Enthusiast. Building intelligent software solutions with passion.",
+    "Portfolio of Nguyễn Đôn Quốc Tuấn | AI Engineer, Full Stack Developer, and Computer Vision Enthusiast. Building intelligent software solutions with passion.",
   keywords: [
     "AI Engineer",
     "Full Stack Developer",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Nguyễn Đôn Quốc Tuấn" }],
   openGraph: {
-    title: "Nguyễn Đôn Quốc Tuấn — AI Engineer & Full Stack Developer",
+    title: "Nguyễn Đôn Quốc Tuấn | AI Engineer & Full Stack Developer",
     description:
       "AI Engineer and Full Stack Developer building intelligent software solutions.",
     type: "website",

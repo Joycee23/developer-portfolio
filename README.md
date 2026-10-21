@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nguyễn Đôn Quốc Tuấn - Developer Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js 16, React 19, Tailwind CSS 4, and Framer Motion.
 
-First, run the development server:
+## Local development
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Run `npm run lint` and `npm run build` before publishing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/data/personal.ts`: profile, verified public repository links, projects, internships, education, and awards.
+- `public/Nguyen_Don_Quoc_Tuan_CV.pdf`: exported two-page Canva CV, including the portfolio link.
+- `public/prj*`: existing product screenshots and demo video.
 
-## Learn More
+Recent AI projects use text summaries and implementation details until real screenshots or demo videos are supplied. IncidentLens is explicitly described as a prototype. No model accuracy, project impact, or proficiency percentages are claimed without supporting measurements.
 
-To learn more about Next.js, take a look at the following resources:
+## Contact form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Without EmailJS configuration, the contact section provides a direct email link. To enable the form, define these public client-side identifiers in `.env.local` or the deployment environment:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
+```
 
-## Deploy on Vercel
+The EmailJS template receives `from_name`, `from_email`, `message`, `to_name`, and `reply_to`. Configure permitted origins in EmailJS. Never put private credentials in `NEXT_PUBLIC_*` variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Preview before deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Review desktop/mobile layouts, theme switching, project disclosures, public links, and the downloadable CV before merging. Updating this repository can trigger the host's deployment integration.
