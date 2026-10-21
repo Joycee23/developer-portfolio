@@ -36,8 +36,10 @@ export default function TypeWriter({
     if (!isDeleting && currentText === currentWord) {
       timeout = setTimeout(() => setIsDeleting(true), pauseDuration);
     } else if (isDeleting && currentText === "") {
-      setIsDeleting(false);
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      }, 0);
     } else {
       timeout = setTimeout(tick, isDeleting ? deletingSpeed : typingSpeed);
     }

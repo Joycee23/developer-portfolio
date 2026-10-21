@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import SocialIcons from "@/components/ui/SocialIcons";
 

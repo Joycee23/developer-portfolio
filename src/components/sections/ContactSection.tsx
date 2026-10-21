@@ -13,6 +13,8 @@ const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "YOUR
 const EMAILJS_PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  ?? "YOUR_PUBLIC_KEY";
 // ──────────────────────────────────────────────────────────────
 
+const emailConfigured = ![EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY].some((value) => !value || value.startsWith("YOUR_"));
+
 type ToastType = "success" | "error" | null;
 
 function Toast({ type, onClose }: { type: ToastType; onClose: () => void }) {
@@ -27,7 +29,8 @@ function Toast({ type, onClose }: { type: ToastType; onClose: () => void }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 10, scale: 0.95 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className={`fixed bottom-8 right-8 z-50 flex items-center gap-4 px-6 py-4 rounded-2xl shadow-2xl backdrop-blur-md border ${
+        role={isSuccess ? "status" : "alert"}
+        className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:max-w-md z-50 flex items-center gap-4 px-6 py-4 rounded-2xl shadow-2xl backdrop-blur-md border ${
           isSuccess
             ? "bg-green-500/20 border-green-500/30 text-green-300"
             : "bg-red-500/20 border-red-500/30 text-red-300"
@@ -40,11 +43,12 @@ function Toast({ type, onClose }: { type: ToastType; onClose: () => void }) {
         )}
         <p className="text-sm font-medium">
           {isSuccess
-            ? "Message sent! I'll get back to you soon 🚀"
-            : "Oops! Something went wrong. Please try again."}
+            ? "Message sent. I'll get back to you soon."
+            : "Message could not be sent. Please try again or use the email link."}
         </p>
         <button
           onClick={onClose}
+          aria-label="Dismiss notification"
           className="ml-2 opacity-60 hover:opacity-100 transition-opacity"
         >
           <X size={16} />
@@ -131,7 +135,7 @@ export default function ContactSection() {
                       <p className="text-xs font-mono text-subtle uppercase tracking-wider mb-1">
                         Email
                       </p>
-                      <p className="text-heading text-lg font-medium group-hover:text-primary transition-colors">
+                      <p className="text-heading text-base sm:text-lg break-all font-medium group-hover:text-primary transition-colors">
                         {personalInfo.email}
                       </p>
                     </div>
@@ -145,7 +149,7 @@ export default function ContactSection() {
                       <p className="text-xs font-mono text-subtle uppercase tracking-wider mb-1">
                         Phone
                       </p>
-                      <p className="text-heading text-lg font-medium group-hover:text-primary transition-colors">
+                      <p className="text-heading text-base sm:text-lg break-all font-medium group-hover:text-primary transition-colors">
                         0961066861
                       </p>
                     </div>
@@ -159,7 +163,7 @@ export default function ContactSection() {
                       <p className="text-xs font-mono text-subtle uppercase tracking-wider mb-1">
                         Location
                       </p>
-                      <p className="text-heading text-lg font-medium group-hover:text-primary transition-colors">
+                      <p className="text-heading text-base sm:text-lg break-all font-medium group-hover:text-primary transition-colors">
                         {personalInfo.location}
                       </p>
                     </div>
@@ -182,9 +186,13 @@ export default function ContactSection() {
                   Send a message
                 </h3>
 
-                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                {emailConfigured ? <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                   <div>
+                    <label htmlFor="contact-name" className="block text-sm text-heading mb-2">Name</label>
                     <input
+                      id="contact-name"
+                      name="from_name"
+                      autoComplete="name"
                       type="text"
                       placeholder="Your Name"
                       required
@@ -194,7 +202,11 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
+                    <label htmlFor="contact-email" className="block text-sm text-heading mb-2">Email</label>
                     <input
+                      id="contact-email"
+                      name="from_email"
+                      autoComplete="email"
                       type="email"
                       placeholder="Your Email"
                       required
@@ -206,7 +218,10 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
+                    <label htmlFor="contact-message" className="block text-sm text-heading mb-2">Message</label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       placeholder="Your Message"
                       rows={5}
                       required
@@ -221,7 +236,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-5 rounded-2xl bg-heading text-surface font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white transition-all duration-300 shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_-5px_rgba(255,255,255,0.4)] disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
+                    className="w-full py-5 rounded-2xl bg-heading text-surface font-semibold text-lg flex items-center justify-center gap-3 hover:opacity-90 transition-all duration-300 shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_-5px_rgba(255,255,255,0.4)] disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
                   >
                     {/* Shimmer on hover */}
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
@@ -260,7 +275,12 @@ export default function ContactSection() {
                       )}
                     </span>
                   </button>
-                </form>
+                </form> : (
+                  <div className="relative z-10">
+                    <p className="text-body mb-6 leading-relaxed">For internship opportunities or project questions, email me directly.</p>
+                    <a href={`mailto:${personalInfo.email}`} className="button-primary"><Mail size={18} /> Email me</a>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
