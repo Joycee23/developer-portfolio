@@ -149,12 +149,15 @@ export interface Project {
   role?: string;
   status?: string;
   note?: string;
+  workflow?: string[];
 }
 
 export const recentProjects: Project[] = [
   {
     title: "AI Support Operations",
     role: "Personal project",
+    image: "/support-operations-preview.jpg",
+    workflow: ["Knowledge base", "Retrieval", "Cited draft", "Human review"],
     description: "A multi-tenant support platform that drafts answers from an approved knowledge base, with citations and human escalation.",
     technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL", "pgvector", "Gemini", "Docker"],
     features: [
@@ -169,7 +172,8 @@ export const recentProjects: Project[] = [
   {
     title: "IncidentLens",
     role: "Full-stack application",
-    status: "Prototype",
+    status: "Not yet runtime-validated",
+    workflow: ["Video", "AI observations", "Evidence", "Reviewer approval"],
     description: "AI-assisted driving incident review using event logs, timelines, and video evidence.",
     technologies: ["Python", "FastAPI", "React", "TypeScript", "Supabase", "Gemini", "OpenCV", "Docker"],
     features: [
@@ -177,17 +181,20 @@ export const recentProjects: Project[] = [
       "Implemented engineer/reviewer roles and approval workflows for AI-generated findings.",
       "Integrated private video storage with temporary signed URLs.",
     ],
-    note: "A review prototype. AI observations require human approval; real-world model accuracy has not been established.",
+    note: "Implementation prototype. The application has not yet been run or validated. AI observations require human approval; model accuracy has not been established.",
     github: "https://github.com/Joycee23/RAV-18",
     color: "#818cf8",
   },
   {
     title: "Build Phase Model - Assisted QC",
-    description: "Model-assisted annotation quality control to flag missed objects and incorrect class labels for review.",
-    technologies: ["Computer Vision", "Object Detection", "Annotation QC"],
+    role: "AI Thực Chiến · Vingroup & VinUniversity",
+    status: "Submitted project",
+    workflow: ["Annotations", "Model checks", "Human review"],
+    description: "Model-assisted annotation QC integrated into CVAT, flagging missed objects and incorrect class labels for review.",
+    technologies: ["CVAT", "Computer Vision", "Object Detection", "Annotation QC"],
     features: [
-      "Developed model-assisted QC to detect missed objects in annotations.",
-      "Flagged incorrect class labels for review and correction.",
+      "Integrated model-assisted checks directly into the CVAT annotation workflow.",
+      "Flagged missed objects and incorrect class labels for human review and correction.",
     ],
     color: "#818cf8",
   },
@@ -235,7 +242,7 @@ export const projects: Project[] = [
       "AI Inference",
     ],
     color: "#06B6D4",
-    image: "/prj1.jpg",
+    image: "/traffic-sign-preview.jpg",
     github: "https://github.com/Joycee23/Traffic_Sign_Detection",
   },
   {

@@ -40,7 +40,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navigationLink = (href: string, label: string) => (
-    <a key={href} href={href} onClick={() => setIsOpen(false)} aria-current={activeSection === href.slice(1) ? "location" : undefined} className={`px-3 py-2 rounded-lg text-sm transition-colors ${activeSection === href.slice(1) ? "text-heading bg-primary/10" : "text-subtle hover:text-heading"}`}>
+    <a key={href} href={href} onClick={() => setIsOpen(false)} aria-current={activeSection === href.slice(1) ? "location" : undefined} className={`inline-flex items-center min-h-11 px-3 py-2 rounded-lg text-sm transition-colors ${activeSection === href.slice(1) ? "text-heading bg-primary/10" : "text-subtle hover:text-heading"}`}>
       {label}
     </a>
   );

@@ -7,7 +7,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="border-t border-white/5 pt-16 pb-8 relative mt-12">
+    <footer className="border-t border-border pt-12 pb-8 relative mt-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
@@ -21,7 +21,7 @@ export default function Footer() {
           <SocialIcons />
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
           <p className="text-subtle text-sm font-mono">
             © {new Date().getFullYear()} Nguyễn Đôn Quốc Tuấn. All rights reserved.
           </p>

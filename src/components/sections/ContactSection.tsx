@@ -49,7 +49,7 @@ function Toast({ type, onClose }: { type: ToastType; onClose: () => void }) {
         <button
           onClick={onClose}
           aria-label="Dismiss notification"
-          className="ml-2 opacity-60 hover:opacity-100 transition-opacity"
+          className="ml-2 min-w-11 min-h-11 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity"
         >
           <X size={16} />
         </button>
@@ -96,13 +96,13 @@ export default function ContactSection() {
   };
 
   const inputClasses =
-    "w-full bg-surface-2 border border-white/10 rounded-2xl px-5 py-4 text-heading placeholder:text-subtle focus:border-primary/50 focus:bg-white/5 transition-all outline-none font-light";
+    "w-full bg-surface-2 border border-border rounded-xl px-5 py-4 text-heading placeholder:text-subtle focus:border-primary transition-colors";
 
   return (
     <>
       <Toast type={toast} onClose={() => setToast(null)} />
 
-      <section id="contact" className="py-24 relative">
+      <section id="contact" className="py-16 md:py-20 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left Column: Contact Info */}
@@ -115,12 +115,11 @@ export default function ContactSection() {
             >
               <div>
                 <h2 className="text-4xl md:text-5xl font-semibold text-heading tracking-tight mb-6">
-                  Let&apos;s build something{" "}
-                  <span className="text-primary">extraordinary.</span>
+                  Let&apos;s talk about{" "}
+                  <span className="text-primary">your team.</span>
                 </h2>
                 <p className="text-body text-lg font-light max-w-md mb-16">
-                  I&apos;m always open to discussing new projects, creative ideas, or
-                  opportunities to be part of your visions.
+                  Interested in my work? Get in touch about AI engineering, full-stack development, or internship opportunities.
                 </p>
 
                 <div className="space-y-8">
@@ -141,7 +140,7 @@ export default function ContactSection() {
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-6 group">
+                  <a href="tel:+84961066861" className="flex items-center gap-6 group">
                     <div className="w-14 h-14 rounded-2xl glass-sm flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
                       <Phone size={24} />
                     </div>
@@ -153,7 +152,7 @@ export default function ContactSection() {
                         0961066861
                       </p>
                     </div>
-                  </div>
+                  </a>
 
                   <div className="flex items-center gap-6 group">
                     <div className="w-14 h-14 rounded-2xl glass-sm flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
@@ -179,11 +178,10 @@ export default function ContactSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="glass p-8 md:p-10 rounded-[2.5rem] relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-[2.5rem] pointer-events-none" />
+              <div className="bg-surface-2 border border-border p-7 md:p-10 rounded-2xl relative">
 
                 <h3 className="text-2xl font-medium text-heading mb-8 relative z-10">
-                  Send a message
+                  {emailConfigured ? "Send a message" : "Continue the conversation"}
                 </h3>
 
                 {emailConfigured ? <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -277,8 +275,12 @@ export default function ContactSection() {
                   </button>
                 </form> : (
                   <div className="relative z-10">
-                    <p className="text-body mb-6 leading-relaxed">For internship opportunities or project questions, email me directly.</p>
+                    <p className="text-body mb-6 leading-relaxed">Email me about a role, or connect on LinkedIn. You can also explore the code behind my projects.</p>
                     <a href={`mailto:${personalInfo.email}`} className="button-primary"><Mail size={18} /> Email me</a>
+                    <div className="flex flex-wrap gap-6 mt-6 text-sm">
+                      <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="inline-link">LinkedIn</a>
+                      <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="inline-link">GitHub</a>
+                    </div>
                   </div>
                 )}
               </div>

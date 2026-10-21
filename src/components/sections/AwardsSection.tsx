@@ -1,71 +1,26 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { awards } from "@/data/personal";
 
 export default function AwardsSection() {
   return (
-    <section id="awards" className="py-24 relative">
+    <section id="awards" className="py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <h2 className="text-3xl font-semibold text-heading tracking-tight mb-4 flex items-center gap-3">
-              <Award className="text-primary" size={28} />
-              Awards & Certificates
-            </h2>
-            <p className="text-subtle text-base max-w-lg">
-              Recognitions and certifications achieved throughout my academic and professional journey.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {awards.map((award, idx) => (
-            <motion.div
-              key={award.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="group relative glass rounded-[2rem] overflow-hidden flex flex-col border border-white/5 hover:border-white/10 transition-colors duration-500"
-            >
-              {/* Image Container with hover zoom */}
-              <a 
-                href={award.image} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative w-full aspect-[4/3] bg-surface-2 overflow-hidden block cursor-zoom-in"
-              >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
-                  style={{ backgroundImage: `url('${award.image}')` }}
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                  <div className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-medium flex items-center gap-2">
-                    <ExternalLink size={16} />
-                    <span>View Full Image</span>
-                  </div>
-                </div>
+        <h2 className="section-title">Awards & Certificates</h2>
+        <p className="text-body max-w-2xl mb-10">University recognition for my traffic sign recognition research.</p>
+        <div className="grid md:grid-cols-2 gap-10">
+          {awards.map((award) => (
+            <article key={award.title}>
+              <a href={award.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${award.title} certificate`} className="relative block aspect-[4/3] project-visual cursor-zoom-in">
+                <Image src={award.image} alt={`${award.issuer}: ${award.title}`} fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
               </a>
-
-              {/* Content */}
-              <div className="p-8">
-                <p className="text-xs font-mono text-primary uppercase tracking-wider mb-2">
-                  {award.issuer}
-                </p>
-                <h3 className="text-2xl font-semibold text-heading mb-3 group-hover:text-primary transition-colors">
-                  {award.title}
-                </h3>
-                <p className="text-body text-base font-light leading-relaxed">
-                  {award.description}
-                </p>
-              </div>
-            </motion.div>
+              <p className="text-sm text-primary mt-6 mb-2">{award.issuer}</p>
+              <h3 className="text-xl font-semibold text-heading mb-3">{award.title}</h3>
+              <p className="text-body leading-relaxed">{award.description}</p>
+              <a href={award.image} target="_blank" rel="noopener noreferrer" aria-label={`View ${award.title} certificate`} className="inline-link mt-3 text-sm">View certificate <ArrowUpRight size={16} aria-hidden="true" /></a>
+            </article>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const vietnam = Be_Vietnam_Pro({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin", "vietnamese"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-vietnam",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -41,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
+    <html lang="en" className={`${vietnam.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans antialiased noise-overlay">{children}</body>
     </html>
   );
