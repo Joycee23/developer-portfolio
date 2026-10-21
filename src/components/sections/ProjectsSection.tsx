@@ -16,18 +16,21 @@ export default function ProjectsSection() {
     <section id="projects" className="py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="section-title">Featured Work</h2>
-        <p className="text-body max-w-2xl mb-10">Computer vision, AI-assisted workflows, and the applications around them. Explore the implementation behind each project.</p>
+        <p className="text-body max-w-2xl mb-10">AI Support Operations leads my work in full-stack AI: knowledge retrieval, cited answers, and human review. More projects follow below.</p>
         <div className="recent-projects mb-16">
           {recentProjects.map((project, index) => (
-            <article key={project.title} className={`recent-project ${index === 0 ? "recent-project-wide" : ""}`}>
+            <article key={project.title} id={index === 0 ? "ai-support-operations" : undefined} className={`recent-project ${index === 0 ? "recent-project-wide" : ""}`}>
               <div className="project-copy">
                 <h3 className="text-2xl font-semibold text-heading tracking-tight">{project.title}</h3>
                 {(project.role || project.status) && <p className="mt-2 text-sm text-primary">{[project.role, project.status].filter(Boolean).join(" · ")}</p>}
                 <p className="text-body leading-relaxed mt-5">{project.description}</p>
               </div>
-              {project.image && <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} application screenshot`} className="relative block aspect-[2792/1576] project-visual project-screenshot">
-                <Image src={project.image} alt="AI Support Operations inbox showing test tickets and the AI-assisted response panel" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
-              </a>}
+              {project.image && <figure className="project-media">
+                <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} project image`} className="relative block aspect-video project-visual project-screenshot">
+                  <Image src={project.image} alt={project.imageAlt ?? `${project.title} project image`} fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
+                </a>
+                {project.imageCaption && <figcaption className="mt-3 text-sm text-subtle leading-relaxed">{project.imageCaption}</figcaption>}
+              </figure>}
               <div className="project-workflow">
                 <p className="text-sm text-subtle mb-4">Workflow</p>
                 <ol aria-label={`${project.title} workflow`} className="workflow-steps">

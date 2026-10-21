@@ -142,6 +142,8 @@ export interface Project {
   technologies: string[];
   features: string[];
   image?: string;
+  imageAlt?: string;
+  imageCaption?: string;
   videoUrl?: string;
   github?: string;
   demo?: string;
@@ -157,6 +159,8 @@ export const recentProjects: Project[] = [
     title: "AI Support Operations",
     role: "Personal project",
     image: "/support-operations-preview.jpg",
+    imageAlt: "AI Support Operations inbox showing test tickets and the AI-assisted response panel",
+    imageCaption: "Application screenshot using test data.",
     workflow: ["Knowledge base", "Retrieval", "Cited draft", "Human review"],
     description: "A multi-tenant support platform that drafts answers from an approved knowledge base, with citations and human escalation.",
     technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL", "pgvector", "Gemini", "Docker"],
@@ -171,6 +175,9 @@ export const recentProjects: Project[] = [
   },
   {
     title: "IncidentLens",
+    image: "/incidentlens-workflow.png",
+    imageAlt: "Workflow diagram: driving video, timestamped AI observations, linked evidence, then human review",
+    imageCaption: "Workflow illustration, not an application screenshot.",
     role: "Full-stack application",
     status: "Not yet runtime-validated",
     workflow: ["Video", "AI observations", "Evidence", "Reviewer approval"],
@@ -187,6 +194,9 @@ export const recentProjects: Project[] = [
   },
   {
     title: "Build Phase Model - Assisted QC",
+    image: "/assisted-qc-workflow.png",
+    imageAlt: "Concept diagram showing missed objects and incorrect class labels flagged for human review in CVAT",
+    imageCaption: "Concept diagram of model-assisted annotation QC in CVAT.",
     role: "AI Thực Chiến · Vingroup & VinUniversity",
     status: "Submitted project",
     workflow: ["Annotations", "Model checks", "Human review"],

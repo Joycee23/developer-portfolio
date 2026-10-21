@@ -102,15 +102,16 @@ h1, h2, h3 { text-wrap: balance; }
 .project-contributions li { padding-left: 16px; position: relative; }
 .project-contributions li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 5px; height: 1px; background: var(--color-primary); }
 .project-footer { margin-top: auto; padding-top: 28px; }
+.project-media { margin-top: 24px; }
 .recent-project-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; background: transparent; }
-.recent-project-wide .project-screenshot { grid-column: 2; grid-row: 1 / span 4; align-self: center; }
+.recent-project-wide .project-media { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin-top: 0; }
 .recent-project-wide .project-footer { grid-column: 1; }
 .service-list { border-top: 1px solid var(--color-border); }
 .service-list > div + div { border-top: 1px solid var(--color-border); }
 @media (max-width: 767px) {
   .recent-projects { grid-template-columns: 1fr; gap: 20px; }
   .recent-project-wide { display: flex; }
-  .recent-project-wide .project-screenshot { margin-top: 24px; align-self: stretch; width: 100%; flex-shrink: 0; }
+  .recent-project-wide .project-media { margin-top: 24px; align-self: stretch; width: 100%; flex-shrink: 0; }
   .hero-project { padding: 6px; }
 }
 
